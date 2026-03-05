@@ -11,39 +11,29 @@ function Favorites() {
   }, []);
 
   return (
-    <div className="bg-black min-h-screen text-white px-10 py-10">
+    <div className="bg-black min-h-screen text-white px-4 sm:px-6 md:px-10 py-8 md:py-10">
       {/* Back Button */}
-      <div className="mb-8">
+      <div className="mb-6 md:mb-8">
         <button
           onClick={() => navigate("/")}
-          className="flex items-center gap-2 border border-gray-400 px-5 py-2 rounded-lg text-gray-300 transition duration-300 hover:bg-red-600 hover:text-white hover:border-transparent"
+          className="flex items-center gap-2 border border-gray-400 px-4 sm:px-5 py-2 rounded-lg text-gray-300 transition hover:bg-red-600 hover:text-white hover:border-transparent"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="currentColor"
-            className="w-5 h-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-          Back to Home
+          ← Back to Home
         </button>
       </div>
 
       {/* Title */}
-      <h1 className="text-4xl font-bold mb-10">❤️ Your Favorites</h1>
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-10">
+        ❤️ Your Favorites
+      </h1>
 
       {/* Favorites Grid */}
       {favorites.length === 0 ? (
-        <p className="text-gray-400">No favorite movies yet.</p>
+        <p className="text-gray-400 text-sm sm:text-base">
+          No favorite movies yet.
+        </p>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
           {favorites.map((movie) => (
             <div
               key={movie.id}
@@ -53,8 +43,9 @@ function Favorites() {
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
-                className="rounded-lg hover:scale-105 transition"
+                className="rounded-lg hover:scale-105 transition duration-300 w-full"
               />
+
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -64,12 +55,13 @@ function Favorites() {
                   localStorage.setItem("favorites", JSON.stringify(updated));
                 }}
                 className="absolute top-2 right-2
-                   w-8 h-8 flex items-center justify-center
-                   bg-black/70 text-white rounded-full
-                   opacity-0 group-hover:opacity-100
-                   hover:bg-red-600 transition duration-300"
+                           w-7 h-7 sm:w-8 sm:h-8
+                           flex items-center justify-center
+                           bg-black/70 text-white rounded-full
+                           opacity-0 group-hover:opacity-100
+                           hover:bg-red-600 transition"
               >
-                <span className="text-lg leading-none">✕</span>
+                <span className="text-sm sm:text-lg leading-none">✕</span>
               </button>
             </div>
           ))}

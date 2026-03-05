@@ -21,7 +21,7 @@ function MovieRow({ title, movies, onSelect }) {
   };
 
   return (
-    <div className="px-10 mb-12">
+    <div className="px-4 sm:px-6 md:px-10 mb-12">
       <h2 className="text-2xl text-white font-bold mb-4">{title}</h2>
 
       {/* ROW WRAPPER */}
@@ -40,10 +40,13 @@ function MovieRow({ title, movies, onSelect }) {
         {/* MOVIE ROW */}
         <div
           ref={rowRef}
-          className="flex gap-4 overflow-x-auto scroll-smooth no-scrollbar"
+          className="flex gap-4 sm:gap-5 md:gap-6 overflow-x-auto scroll-smooth no-scrollbar snap-x snap-mandatory"
         >
           {movies.map((movie) => (
-            <div className="min-w-[200px]" key={movie.id}>
+            <div
+              className="min-w-[130px] sm:min-w-[160px] md:min-w-[200px]"
+              key={movie.id}
+            >
               <MovieCard movie={movie} onSelect={onSelect} />
             </div>
           ))}

@@ -26,22 +26,24 @@ function MovieCard({ movie }) {
 
   return (
     <div
-      className="relative group cursor-pointer transition duration-300"
+      className="relative group cursor-pointer transition duration-300
+                 w-[140px] sm:w-[160px] md:w-[200px]"
       onClick={() => navigate(`/movie/${movie.id}`)}
     >
       <div className="overflow-hidden rounded-xl">
         <img
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.title}
-          className="w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
+          className="w-full h-[210px] sm:h-[240px] md:h-[300px]
+                     object-cover transform group-hover:scale-110 transition duration-500"
         />
       </div>
 
       {/* ❤️ Heart Button */}
       <button
         onClick={toggleFavorite}
-        className="absolute top-3 right-3 z-20
-                 text-2xl transition duration-300"
+        className="absolute top-2 right-2 z-20 text-lg sm:text-xl md:text-2xl
+                   transition duration-300"
       >
         {favorite ? (
           <span className="text-red-600">♥</span>
@@ -54,8 +56,10 @@ function MovieCard({ movie }) {
       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 rounded-xl"></div>
 
       {/* Title */}
-      <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition duration-300">
-        <h3 className="text-lg font-semibold">{movie.title}</h3>
+      <div className="absolute bottom-2 left-2 right-2 text-white opacity-0 group-hover:opacity-100 transition duration-300">
+        <h3 className="text-sm sm:text-base md:text-lg font-semibold line-clamp-2">
+          {movie.title}
+        </h3>
       </div>
     </div>
   );

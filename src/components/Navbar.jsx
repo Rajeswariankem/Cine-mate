@@ -11,7 +11,7 @@ function Navbar({ onSearch }) {
   };
 
   return (
-    <nav className="fixed w-full bg-black/80 backdrop-blur-md text-white px-10 py-4 flex justify-between items-center z-50">
+    <nav className="fixed w-full bg-black/80 backdrop-blur-md text-white px-4 md:px-10 py-4 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-0 z-50">
       {/* Left - Logo */}
       <h1
         onClick={() => navigate("/")}
@@ -27,7 +27,7 @@ function Navbar({ onSearch }) {
           <input
             type="text"
             placeholder="Search movies..."
-            className="px-4 py-2 rounded-lg bg-zinc-800 text-white focus:outline-none w-60"
+            className="px-4 py-2 rounded-lg bg-zinc-800 text-white focus:outline-none w-40 sm:w-56 md:w-60"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
