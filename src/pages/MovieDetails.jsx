@@ -88,6 +88,7 @@ function MovieDetails() {
 
   const providerLinks = {
     "Amazon Prime Video": "https://www.primevideo.com/",
+    "Amazon Prime Video with Ads": "https://www.primevideo.com/",
     Netflix: "https://www.netflix.com/",
     JioHotstar: "https://www.hotstar.com/",
     "Disney+ Hotstar": "https://www.hotstar.com/",
