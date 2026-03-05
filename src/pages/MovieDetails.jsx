@@ -11,6 +11,7 @@ function MovieDetails() {
   const [movie, setMovie] = useState(null);
   const [trailer, setTrailer] = useState(null);
   const [providers, setProviders] = useState([]);
+  const [watchLink, setWatchLink] = useState("");
   const [cast, setCast] = useState([]);
   const [similar, setSimilar] = useState([]);
   const [favorite, setFavorite] = useState(false);
@@ -62,7 +63,14 @@ function MovieDetails() {
       )
       .then((res) => {
         const india = res.data.results?.IN;
-        if (india?.flatrate) setProviders(india.flatrate);
+
+        if (india?.flatrate) {
+          setProviders(india.flatrate);
+        }
+
+        if (india?.link) {
+          setWatchLink(india.link);
+        }
       });
 
     axios
@@ -78,6 +86,15 @@ function MovieDetails() {
     window.scrollTo(0, 0);
   }, [id]);
 
+  const providerLinks = {
+    "Amazon Prime Video": "https://www.primevideo.com/",
+    Netflix: "https://www.netflix.com/",
+    JioHotstar: "https://www.hotstar.com/",
+    "Disney+ Hotstar": "https://www.hotstar.com/",
+    Hotstar: "https://www.hotstar.com/",
+    AppleTV: "https://tv.apple.com/",
+    Zee5: "https://www.zee5.com/",
+  };
   if (!movie) return <div className="text-white p-10 text-xl">Loading...</div>;
 
   return (
@@ -172,6 +189,10 @@ function MovieDetails() {
             providers.map((provider) => (
               <button
                 key={provider.provider_id}
+                onClick={() => {
+                  const link = providerLinks[provider.provider_name];
+                  if (link) window.open(link, "_blank");
+                }}
                 className="flex items-center gap-2 border border-blue-600 text-blue-600 bg-white px-4 py-2 rounded-lg font-semibold text-sm sm:text-base hover:bg-blue-600 hover:text-white transition"
               >
                 <img
