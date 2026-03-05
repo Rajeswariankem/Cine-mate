@@ -8,6 +8,11 @@ function Navbar({ onSearch }) {
   const handleSearch = (e) => {
     e.preventDefault();
     onSearch(query);
+
+    const section = document.getElementById("movies-section");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (

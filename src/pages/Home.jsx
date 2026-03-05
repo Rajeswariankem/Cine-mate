@@ -48,7 +48,7 @@ function Home() {
       <Navbar onSearch={searchMovies} />
       <Hero />
 
-      <div className="mt-20">
+      <div id="movies-section" className="mt-20 scroll-mt-24">
         {searchResults.length > 0 ? (
           <MovieRow title="🔎 Search Results" movies={searchResults} />
         ) : (
